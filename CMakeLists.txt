@@ -9,4 +9,6 @@ add_executable(moscow main.cpp
         add/add.h
         add/add.cpp
         readmem/readmem.c
-        readmem/readmem.h)
+        readmem/readmem.h
+        pop/pop.cpp
+        pop/pop.h)

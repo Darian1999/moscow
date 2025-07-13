@@ -6,22 +6,25 @@
 #include "popcnt/popcnt.h"
 #include "add/add.h"
 #include "readmem/readmem.h"
+#include "pop/pop.h"
 #include <iostream>
+#include <vector>
 
 /**
  * @brief The main function..
  *
- * This program allows the user to choose between three operations:
+ * This program allows the user to choose between four operations:
  * 1. POPCNT: Counts the number of set bits in a given 64-bit integer.
  * 2. ADD: Adds two integers using a bitwise algorithm.
  * 3. Memory: Demonstrates reading from, writing to, and zeroing a memory address.
+ * 4. POP: Demonstrates popping a value from a stack.
  *
  * The user is prompted to choose an operation and then provide the necessary
  * input. The result of the operation is then printed to the console.
  */
 int main() {
     int choice = 0;
-    std::cout << "Choose 0 for POPCNT, 1 for ADD, or 2 for Memory Operations: ";
+    std::cout << "Choose 0 for POPCNT, 1 for ADD, 2 for Memory Operations, or 3 for POP: ";
     std::cin >> choice;
 
     if (choice == 1) {
@@ -71,6 +74,27 @@ int main() {
                 std::cout << "Invalid choice." << std::endl;
                 break;
         }
+    } else if (choice == 3) {
+        std::vector<uint32_t> stack_data = {10, 20, 30, 40, 50};
+        uint32_t* esp = stack_data.data() + stack_data.size() - 1; // Point to the top of the stack
+
+        std::cout << "Stack (top to bottom): ";
+        for (int i = stack_data.size() - 1; i >= 0; --i) {
+            std::cout << stack_data[i] << " ";
+        }
+        std::cout << std::endl;
+
+        uint32_t popped_value = pop(esp);
+
+        std::cout << "Popped value: " << popped_value << std::endl;
+
+        std::cout << "Stack after pop: ";
+        for (const auto& val : stack_data) {
+            if (&val <= esp) {
+                std::cout << val << " ";
+            }
+        }
+        std::cout << std::endl;
     }
 
     return 0;
