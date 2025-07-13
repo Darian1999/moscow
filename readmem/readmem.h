@@ -7,6 +7,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Reads the value at a given memory address.
  * @param address The memory address to read from.
@@ -26,5 +30,9 @@ void set_memory(uintptr_t address, uintptr_t value);
  * @param address The memory address to zero out.
  */
 void zero_memory(uintptr_t address);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //READMEM_H
