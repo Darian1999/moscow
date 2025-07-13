@@ -9,7 +9,7 @@
 #include <iostream>
 
 /**
- * @brief The main function.
+ * @brief The main function..
  *
  * This program allows the user to choose between three operations:
  * 1. POPCNT: Counts the number of set bits in a given 64-bit integer.
